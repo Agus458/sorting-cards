@@ -13,16 +13,45 @@
     <link rel="shortcut icon" href="./4geeks.ico" />
   </head>
   <body>
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
+    <div class="nav">
+      <form id="form">
+        <input class="form-control" type="number" id="cantidad" />
+
+        <button class="btn btn-light" type="button" id="draw">Draw</button>
+
+        <button class="btn btn-light" type="button" id="sort">Sort</button>
+      </form>
+    </div>
+    <div class="container">
+      <div class="row" id="draw-cards">
+        <div class="card">
+          <div class="card-header">
+            <div class="figure">♦</div>
+          </div>
+          <div class="card-body">
+            <div class="number">2</div>
+          </div>
+          <div class="card-footer">
+            <div class="figure">♦</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="title">
+        <h1>Bubble sorted</h1>
+      </div>
+      <div class="row" id="sorted-cards">
+        <div class="card">
+          <div class="card-header">
+            <div class="figure">♦</div>
+          </div>
+          <div class="card-body">
+            <div class="number">2</div>
+          </div>
+          <div class="card-footer">
+            <div class="figure">♦</div>
+          </div>
+        </div>
       </div>
     </div>
   </body>
