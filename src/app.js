@@ -11,7 +11,28 @@ function generateRandom(cant) {
   return Math.floor(Math.random() * cant);
 }
 
+function selection(arr) {
+  let cambios = 0;
+  for (let x = 0; x < arr.length; x++) {
+    let min = x;
+    for (let y = x + 1; y < arr.length; y++) {
+      if (arr[min].numero > arr[y].numero) {
+        min = y;
+      }
+    }
+
+    if (min != x) {
+      let aux = arr[x];
+      arr[x] = arr[min];
+      arr[min] = aux;
+      cambios++;
+    }
+  }
+  return cambios;
+}
+
 function burbuja(arr) {
+  let cambios = 0;
   let wall = arr.length - 1;
 
   while (wall > 0) {
@@ -21,6 +42,7 @@ function burbuja(arr) {
         let aux = arr[i];
         arr[i] = arr[i + 1];
         arr[i + 1] = aux;
+        cambios++;
       }
 
       i++;
@@ -28,7 +50,7 @@ function burbuja(arr) {
 
     wall--;
   }
-  return arr;
+  return cambios;
 }
 
 function mostrarCartas(div, arr) {
@@ -99,14 +121,38 @@ draw.addEventListener("click", function(event) {
   }
 });
 
-let sort = document.getElementById("sort");
-sort.addEventListener("click", function(event) {
+let baubbleSort = document.getElementById("baubble-sort");
+baubbleSort.addEventListener("click", function(event) {
   if (mazo.length > 0) {
     // Ordeno las cartas
-    let mazoOrdenado = burbuja(mazo);
 
-    let sortedCards = document.getElementById("sorted-cards");
+    let mazoOrdenado = mazo.slice();
 
-    mostrarCartas(sortedCards, mazoOrdenado);
+    let cambios = burbuja(mazoOrdenado);
+
+    console.log(cambios);
+
+    let baubbleSortedCards = document.getElementById("baubble-sorted-cards");
+
+    mostrarCartas(baubbleSortedCards, mazoOrdenado);
+  }
+});
+
+let selectionSort = document.getElementById("selection-sort");
+selectionSort.addEventListener("click", function(event) {
+  if (mazo.length > 0) {
+    // Ordeno las cartas
+
+    let mazoOrdenado = mazo.slice();
+
+    let cambios = selection(mazoOrdenado);
+
+    console.log(cambios);
+
+    let selectionSortedCards = document.getElementById(
+      "selection-sorted-cards"
+    );
+
+    mostrarCartas(selectionSortedCards, mazoOrdenado);
   }
 });
